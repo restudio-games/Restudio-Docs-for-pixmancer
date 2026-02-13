@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>restudio docs for pixmancer</title>
+    
+    <!-- Tiny5 Font -->
+    <link href="https://fonts.cdnfonts.com/css/tiny5" rel="stylesheet">
+
+    <!-- Material Icons (لأيقونات warning و close) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .navbar {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .navbar h1 {
+            font-family: 'Tiny5', sans-serif;
+            font-size: 20px;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        /* Orange Warning Banner */
+        .warning-banner {
+            background-color: #ff9800;
+            color: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            border-bottom: 3px solid #e68900;
+        }
+
+        .warning-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .warning-content .material-icons {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            font-size: 24px;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-family: 'Tiny5', sans-serif;
+            color: #222;
+            margin-top: 25px;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .keyword-blue { color: #569CD6; font-weight: bold; }
+        .keyword-green { color: #6A9955; font-weight: bold; }
+        .keyword-red { color: #F44747; font-weight: bold; }
+        .string-orange { color: #CE9178; }
+        .comment-gray { color: #6A9955; font-style: italic; }
+
+        .section-title {
+            background-color: #e0e0e0;
+            padding: 8px 12px;
+            border-left: 5px solid #569CD6;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .project-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .project-iframe {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="https://i.postimg.cc/yYCszSyc/swrh-restudio.png" alt="Logo">
+        <h1>Docs</h1>
+    </div>
+
+    <!-- Warning Banner with Close Button -->
+    <div class="warning-banner" id="warningBanner">
+        <div class="warning-content">
+            <span class="material-icons">warning</span>
+            Warning! Pixmancer will be discontinued on December 19, 2025, but there is an improved version called Community Edition.
+        </div>
+        <span class="material-icons close-btn" onclick="closeWarning()">close</span>
+    </div>
+
+    <div style="padding: 20px;">
+
+        <!-- 1. Script Editor -->
+        <h1>1. Script Editor</h1>
+        <p>Roland Script is used to control frames, layers, and objects in your projects. Below is the syntax and explanation.</p>
+
+        <div class="section-title">Example Script</div>
+        <p>This example creates a background layer and a frame.</p>
+
+        <div class="code-block">
+<span class="keyword-blue">HI ROLAND.SCRIPT!</span> 
+<span class="comment-gray">// Entry point of the script. The engine starts reading from here.</span>
+
+<span class="keyword-green">MAKE.NEW LAYER!</span><span class="string-orange">("Background")</span> 
+<span class="comment-gray">// Creates a new layer called "Background". Used for base visuals.</span>
+
+<span class="keyword-green">NAME.NEW FRAME!</span><span class="string-orange">("Frame 1")</span> 
+<span class="comment-gray">// Creates and names a new frame "Frame 1".</span>
+
+<span class="keyword-red">END!</span> 
+<span class="comment-gray">// Ends the script. The engine stops reading here.</span>
+        </div>
+
+        <!-- 2. Drawing Tools -->
+        <h1>2. Drawing Tools</h1>
+        <p><b>Text Tool:</b> Add text to your canvas. You can move and edit it freely.</p>
+        <p><b>Dithering Tool:</b> Create shading using dots. Ideal for small sprites or pixel art.</p>
+        <p><b>Move Tool:</b> Move layers, frames, or objects around the canvas.</p>
+        <p><b>Blur Tool:</b> Softens pixels to create smooth transitions or depth effects.</p>
+        <p><b>Contour Tool:</b> Draw precise outlines or modify edges of your shapes.</p>
+        <p><b>Zoom In / Zoom Out:</b> Focus on details or view the whole canvas.</p>
+
+        <!-- 3. Project Tools -->
+        <h1>3. Project Tools</h1>
+        <p><b>Static Project / Animation Project:</b> Choose the type of project you are creating.</p>
+        <p><b>Palette:</b> Select colors to use in your drawings.</p>
+        <p><b>Opacity:</b> Control the transparency of the brush only.</p>
+        <p><b>Brush Size:</b> Adjust the size of your brush for more control.</p>
+
+        <!-- 4. Frames & Layers -->
+        <h1>4. Frames & Layers</h1>
+        <p><b>Frames:</b> Manage frames for animations. You can set FPS and animation speed.</p>
+        <p><b>Play / Stop:</b> Preview or pause your animation.</p>
+        <p><b>Add Frame / Add Layer:</b> Insert new frames or layers to expand your project.</p>
+
+        <!-- 5. Actions & Export -->
+        <h1>5. Actions & Export</h1>
+        <p><b>Export PNG / GIF / APNG:</b> Save your artwork in different formats.</p>
+        <p><b>Clear:</b> Remove all content from the canvas.</p>
+
+        <!-- Project Section -->
+        <h1>Project</h1>
+        <p>See the <b>Pixmancer</b> tool included directly below:</p>
+        <iframe class="project-iframe" height="167" frameborder="0" src="https://itch.io/embed/3785915" width="552">
+            <a href="https://restudio-games.itch.io/pixmancer">Pixmancer by restudio games</a>
+        </iframe>
+
+        <div class="project-images">
+            <img src="https://i.postimg.cc/w31hVb4W/4z-Ky-G9.png">
+            <img src="https://i.postimg.cc/yWDFPrpP/m-Svo-Om.png">
+            <img src="https://i.postimg.cc/F1YjZnCT/Y-be2y.png">
+        </div>
+
+        <p>Thank you very much for reading the documents</p>
+        <p>© Restudio Games</p>
+
+    </div>
+
+    <script>
+    function closeWarning() {
+        document.getElementById("warningBanner").style.display = "none";
+    }
+    </script>
+
+</body>
+</html>
