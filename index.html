@@ -7,7 +7,7 @@
     <!-- Tiny5 Font -->
     <link href="https://fonts.cdnfonts.com/css/tiny5" rel="stylesheet">
 
-    <!-- Material Icons (لأيقونات warning و close) -->
+    <!-- Material Icons (لأيقونات warning و close و copy) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <style>
@@ -108,6 +108,50 @@
             font-weight: bold;
         }
 
+        /* شريط العنوان الرمادي */
+        .script-header {
+            background-color: #808080;
+            color: white;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 6px 6px 0 0;
+            font-family: 'Tiny5', sans-serif;
+            font-size: 18px;
+        }
+        
+        .script-header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .copy-button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #666666;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+            font-family: Arial, sans-serif; /* خط عادي لزر copy */
+        }
+        
+        .copy-button:hover {
+            background-color: #555555;
+        }
+        
+        .copy-button .material-icons {
+            font-size: 18px;
+        }
+        
+        .code-container {
+            margin-top: 0;
+            border-radius: 0 0 6px 6px;
+        }
+
         .project-images {
             display: flex;
             flex-wrap: wrap;
@@ -152,9 +196,19 @@
         <p>Roland Script is used to control frames, layers, and objects in your projects. Below is the syntax and explanation.</p>
 
         <div class="section-title">Example Script</div>
-        <p>This example creates a background layer and a frame.</p>
-
-        <div class="code-block">
+        
+        <!-- شريط العنوان الرمادي مع زر copy -->
+        <div class="script-header">
+            <div class="script-header-left">
+                <span>roland script</span>
+            </div>
+            <div class="copy-button" onclick="copyScript()">
+                <span class="material-icons">content_copy</span>
+                <span>copy</span>
+            </div>
+        </div>
+        
+        <div class="code-block code-container" id="scriptCode">
 <span class="keyword-blue">HI ROLAND.SCRIPT!</span> 
 <span class="comment-gray">// Entry point of the script. The engine starts reading from here.</span>
 
@@ -172,7 +226,7 @@
         <h1>2. Drawing Tools</h1>
         <p><b>Text Tool:</b> Add text to your canvas. You can move and edit it freely.</p>
         <p><b>Dithering Tool:</b> Create shading using dots. Ideal for small sprites or pixel art.</p>
-        <p><b>Move Tool:</b> Move layers, frames, or objects around the canvas.</p>
+        <p><b>Move Tool:</b> to move the canvas</p>
         <p><b>Blur Tool:</b> Softens pixels to create smooth transitions or depth effects.</p>
         <p><b>Contour Tool:</b> Draw precise outlines or modify edges of your shapes.</p>
         <p><b>Zoom In / Zoom Out:</b> Focus on details or view the whole canvas.</p>
@@ -216,6 +270,29 @@
     <script>
     function closeWarning() {
         document.getElementById("warningBanner").style.display = "none";
+    }
+    
+    function copyScript() {
+        // Get the script text content (excluding HTML tags)
+        const codeElement = document.getElementById("scriptCode");
+        let scriptText = "";
+        
+        // Extract text content from each line
+        const lines = codeElement.innerHTML.split('<br>');
+        for (let line of lines) {
+            // Remove HTML tags but keep line breaks
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = line;
+            scriptText += tempDiv.textContent || tempDiv.innerText || '';
+            scriptText += '\n';
+        }
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(scriptText).then(function() {
+            alert('Script copied to clipboard!');
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
     }
     </script>
 
