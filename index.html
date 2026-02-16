@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>restudio docs for pixmancer</title>
-    
+
     <!-- Tiny5 Font -->
     <link href="https://fonts.cdnfonts.com/css/tiny5" rel="stylesheet">
 
     <!-- Material Icons (لأيقونات warning و close و copy) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    
+
+    <!-- Favicon (أيقونة الموقع) -->
+    <link rel="icon" href="https://i.postimg.cc/66MLbbg8/restudio-profile.png" type="image/png">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -117,15 +120,16 @@
             align-items: center;
             justify-content: space-between;
             border-radius: 6px 6px 0 0;
-            font-family: 'Tiny5', sans-serif;
+            /* font-family: 'Tiny5', sans-serif; */ /* تم التعليق على هذا السطر */
+            font-family: Arial, sans-serif; /* تم تغيير الخط إلى Arial */
             font-size: 18px;
         }
-        
+
         .script-header-left {
             display: flex;
             align-items: center;
         }
-        
+
         .copy-button {
             display: flex;
             align-items: center;
@@ -138,15 +142,15 @@
             transition: 0.2s;
             font-family: Arial, sans-serif; /* خط عادي لزر copy */
         }
-        
+
         .copy-button:hover {
             background-color: #555555;
         }
-        
+
         .copy-button .material-icons {
             font-size: 18px;
         }
-        
+
         .code-container {
             margin-top: 0;
             border-radius: 0 0 6px 6px;
@@ -169,6 +173,16 @@
         .project-iframe {
             margin-top: 20px;
             max-width: 100%;
+        }
+
+        /* ستايل جديد للعبارة البنفسجية */
+        .community-edition-badge {
+            color: #8a2be2; /* لون بنفسجي */
+            font-size: 0.7em; /* تصغير الخط قليلاً */
+            font-family: 'Tiny5', sans-serif; /* تم تغيير الخط إلى Tiny5 */
+            margin-left: 10px;
+            font-weight: normal; /* جعل الخط غير عريض */
+            vertical-align: middle; /* لمحاذاة أفضل */
         }
     </style>
 </head>
@@ -196,7 +210,7 @@
         <p>Roland Script is used to control frames, layers, and objects in your projects. Below is the syntax and explanation.</p>
 
         <div class="section-title">Example Script</div>
-        
+
         <!-- شريط العنوان الرمادي مع زر copy -->
         <div class="script-header">
             <div class="script-header-left">
@@ -207,23 +221,23 @@
                 <span>copy</span>
             </div>
         </div>
-        
+
         <div class="code-block code-container" id="scriptCode">
-<span class="keyword-blue">HI ROLAND.SCRIPT!</span> 
+<span class="keyword-blue">HI ROLAND.SCRIPT!</span>
 <span class="comment-gray">// Entry point of the script. The engine starts reading from here.</span>
 
-<span class="keyword-green">MAKE.NEW LAYER!</span><span class="string-orange">("Background")</span> 
+<span class="keyword-green">MAKE.NEW LAYER!</span><span class="string-orange">("Background")</span>
 <span class="comment-gray">// Creates a new layer called "Background". Used for base visuals.</span>
 
-<span class="keyword-green">NAME.NEW FRAME!</span><span class="string-orange">("Frame 1")</span> 
+<span class="keyword-green">NAME.NEW FRAME!</span><span class="string-orange">("Frame 1")</span>
 <span class="comment-gray">// Creates and names a new frame "Frame 1".</span>
 
-<span class="keyword-red">END!</span> 
+<span class="keyword-red">END!</span>
 <span class="comment-gray">// Ends the script. The engine stops reading here.</span>
         </div>
 
         <!-- 2. Drawing Tools -->
-        <h1>2. Drawing Tools</h1>
+        <h1>2. Drawing Tools <span class="community-edition-badge">- new in community edition</span></h1>
         <p><b>Text Tool:</b> Add text to your canvas. You can move and edit it freely.</p>
         <p><b>Move Tool:</b> to move the canvas</p>
         <p><b>Blur Tool:</b> Softens pixels to create smooth transitions or depth effects.</p>
@@ -255,9 +269,9 @@
         </iframe>
 
         <div class="project-images">
-            <img src="https://i.postimg.cc/w31hVb4W/4z-Ky-G9.png">
-            <img src="https://i.postimg.cc/yWDFPrpP/m-Svo-Om.png">
-            <img src="https://i.postimg.cc/F1YjZnCT/Y-be2y.png">
+            <img src="https://i.postimg.cc/w31hVb4W/4z-Ky-G9.png" alt="Pixmancer Screenshot 1">
+            <img src="https://i.postimg.cc/yWDFPrpP/m-Svo-Om.png" alt="Pixmancer Screenshot 2">
+            <img src="https://i.postimg.cc/F1YjZnCT/Y-be2y.png" alt="Pixmancer Screenshot 3">
         </div>
 
         <p>Thank you very much for reading the documents</p>
@@ -269,12 +283,12 @@
     function closeWarning() {
         document.getElementById("warningBanner").style.display = "none";
     }
-    
+
     function copyScript() {
         // Get the script text content (excluding HTML tags)
         const codeElement = document.getElementById("scriptCode");
         let scriptText = "";
-        
+
         // Extract text content from each line
         const lines = codeElement.innerHTML.split('<br>');
         for (let line of lines) {
@@ -284,7 +298,7 @@
             scriptText += tempDiv.textContent || tempDiv.innerText || '';
             scriptText += '\n';
         }
-        
+
         // Copy to clipboard
         navigator.clipboard.writeText(scriptText).then(function() {
             alert('Script copied to clipboard!');
