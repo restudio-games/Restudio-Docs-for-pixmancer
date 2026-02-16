@@ -7,7 +7,7 @@
     <!-- Tiny5 Font -->
     <link href="https://fonts.cdnfonts.com/css/tiny5" rel="stylesheet">
 
-    <!-- Material Icons (لأيقونات warning و close و copy) -->
+    <!-- Material Icons (لأيقونات warning و close) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <!-- Favicon (أيقونة الموقع) -->
@@ -111,43 +111,13 @@
             font-weight: bold;
         }
 
-        /* شريط العنوان الرمادي */
+        /* شريط العنوان الرمادي - بدون زر copy */
         .script-header {
             background-color: #808080;
             color: white;
             padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             border-radius: 6px 6px 0 0;
-            /* font-family: 'Tiny5', sans-serif; */ /* تم التعليق على هذا السطر */
-            font-family: Arial, sans-serif; /* تم تغيير الخط إلى Arial */
-            font-size: 18px;
-        }
-
-        .script-header-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .copy-button {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background-color: #666666;
-            padding: 4px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.2s;
-            font-family: Arial, sans-serif; /* خط عادي لزر copy */
-        }
-
-        .copy-button:hover {
-            background-color: #555555;
-        }
-
-        .copy-button .material-icons {
+            font-family: Arial, sans-serif;
             font-size: 18px;
         }
 
@@ -177,12 +147,12 @@
 
         /* ستايل جديد للعبارة البنفسجية */
         .community-edition-badge {
-            color: #8a2be2; /* لون بنفسجي */
-            font-size: 0.7em; /* تصغير الخط قليلاً */
-            font-family: 'Tiny5', sans-serif; /* تم تغيير الخط إلى Tiny5 */
+            color: #8a2be2;
+            font-size: 0.7em;
+            font-family: 'Tiny5', sans-serif;
             margin-left: 10px;
-            font-weight: normal; /* جعل الخط غير عريض */
-            vertical-align: middle; /* لمحاذاة أفضل */
+            font-weight: normal;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -211,18 +181,12 @@
 
         <div class="section-title">Example Script</div>
 
-        <!-- شريط العنوان الرمادي مع زر copy -->
+        <!-- شريط العنوان الرمادي - بدون زر copy -->
         <div class="script-header">
-            <div class="script-header-left">
-                <span>roland script</span>
-            </div>
-            <div class="copy-button" onclick="copyScript()">
-                <span class="material-icons">content_copy</span>
-                <span>copy</span>
-            </div>
+            <span>roland script</span>
         </div>
 
-        <div class="code-block code-container" id="scriptCode">
+        <div class="code-block code-container">
 <span class="keyword-blue">HI ROLAND.SCRIPT!</span>
 <span class="comment-gray">// Entry point of the script. The engine starts reading from here.</span>
 
@@ -237,7 +201,7 @@
         </div>
 
         <!-- 2. Drawing Tools -->
-        <h1>2. Drawing Tools <span class="community-edition-badge">- new in community edition</span></h1>
+        <h1>2. Drawing Tools - new in community edition</h1>
         <p><b>Text Tool:</b> Add text to your canvas. You can move and edit it freely.</p>
         <p><b>Move Tool:</b> to move the canvas</p>
         <p><b>Blur Tool:</b> Softens pixels to create smooth transitions or depth effects.</p>
@@ -282,29 +246,6 @@
     <script>
     function closeWarning() {
         document.getElementById("warningBanner").style.display = "none";
-    }
-
-    function copyScript() {
-        // Get the script text content (excluding HTML tags)
-        const codeElement = document.getElementById("scriptCode");
-        let scriptText = "";
-
-        // Extract text content from each line
-        const lines = codeElement.innerHTML.split('<br>');
-        for (let line of lines) {
-            // Remove HTML tags but keep line breaks
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = line;
-            scriptText += tempDiv.textContent || tempDiv.innerText || '';
-            scriptText += '\n';
-        }
-
-        // Copy to clipboard
-        navigator.clipboard.writeText(scriptText).then(function() {
-            alert('Script copied to clipboard!');
-        }, function(err) {
-            console.error('Could not copy text: ', err);
-        });
     }
     </script>
 
